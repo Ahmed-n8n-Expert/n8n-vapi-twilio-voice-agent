@@ -1,0 +1,164 @@
+{
+  "name": "Vapi Calls Log",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cf22b3a0-d7fb-4126-823a-d94cee22dfdd",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5bbc4981-479c-470d-9217-e72ddfbadb51",
+      "name": "Webhook",
+      "webhookId": "cf22b3a0-d7fb-4126-823a-d94cee22dfdd"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "155-BIteTtI0U2QZYoJ-EWuGgQbf-6WFDX79nV01xKRM",
+          "mode": "list",
+          "cachedResultName": "Vapi Calls Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/155-BIteTtI0U2QZYoJ-EWuGgQbf-6WFDX79nV01xKRM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/155-BIteTtI0U2QZYoJ-EWuGgQbf-6WFDX79nV01xKRM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data & Time": "={{ $json.body.message.call.createdAt }}",
+            "Customer Number": "={{ $json.body.message.call.id }}",
+            "Call Summary": "={{ $json.body.message.assistant.analysisPlan.summaryPlan.enabled }}",
+            "Transcript": "={{ $json.body.message.artifact.messages[0].message }}",
+            "Recording Url": "={{ $json.body.message.call.monitor.controlUrl }}",
+            "Cost": "={{ $json.body.message.call.cost }}",
+            "Duration": "={{ $json.body.message.assistant.server.timeoutSeconds }}"
+          },
+          "matchingColumns": [
+            "Customer Number"
+          ],
+          "schema": [
+            {
+              "id": "Data & Time",
+              "displayName": "Data & Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Summary",
+              "displayName": "Call Summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transcript",
+              "displayName": "Transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recording Url",
+              "displayName": "Recording Url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cost",
+              "displayName": "Cost",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Duration",
+              "displayName": "Duration",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Customer Number",
+              "displayName": "Customer Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "08da7fd7-7492-43ca-b482-c3aa6516232f",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0Ov7ApJj9VuzSVp",
+          "name": "Google Sheets account 5"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "ffbf8187-afac-4830-8ec6-74b13dd02804",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9aa2603dda94482e4b81f20d27acd5b407e83ff0532377f7ddea8d1bbabeeeee"
+  },
+  "id": "QLSvabi2H4NYm_cKp8OJk",
+  "tags": []
+}
